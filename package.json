@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "build": "pnpm webpack --config webpack.config.js",
     "start": "pnpm ts-node ./server/index.ts",
-    "pack": "pnpm webpack --config webpack.config.js"
+    "prod": "pnpm run build & pnpm run start",
+    "dev": "pnpm nodemon --watch ./src --ext ts,tsx --exec pnpm run build & pnpm run start"
   },
   "dependencies": {
     "dotenv": "^16.0.3",

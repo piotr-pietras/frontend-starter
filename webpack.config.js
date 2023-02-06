@@ -1,8 +1,13 @@
 const path = require("path");
+const dotenv = require("dotenv");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+const env = dotenv.config().parsed;
+const mode = env.FRONTEND_ENVIRONMENT || undefined;
 
 module.exports = {
   entry: "./src/index.tsx",
+  mode,
   module: {
     rules: [
       {
