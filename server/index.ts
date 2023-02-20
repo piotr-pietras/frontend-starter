@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 const app = express();
 const env = dotenv.config().parsed;
 
+console.log(`ENV file port is set to: ${env.FRONTEND_PORT}`);
 const PORT = env.FRONTEND_PORT || "3000";
 
 app.use(express.static(path.join(__dirname, "../dist")));

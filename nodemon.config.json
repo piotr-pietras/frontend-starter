@@ -1,0 +1,7 @@
+{
+  "restartable": "rs",
+  "verbose": false,
+  "watch": ["./src", "./server"],
+  "ext": "ts,tsx",
+  "exec": "pnpm run build & pnpm run start"
+}
