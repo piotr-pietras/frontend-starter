@@ -5,13 +5,12 @@ import dotenv from "dotenv";
 const app = express();
 const env = dotenv.config().parsed;
 
-console.log(`ENV file port is set to: ${env.FRONTEND_PORT}`);
 const PORT = env.FRONTEND_PORT || "3000";
+const STATIC_DIR = path.join(__dirname, "../dist");
 
-app.use(express.static(path.join(__dirname, "../dist")));
-
-app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+app.use(express.static(STATIC_DIR));
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(STATIC_DIR, "index.html"));
 });
 
 try {
