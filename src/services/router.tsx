@@ -1,13 +1,9 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import { MainLayout } from "./common/layouts/MainLayout";
-import { About } from "./features/About/About";
-import { Dashboard } from "./features/Dashboard/Dashboard";
-
-export enum AppRoutes {
-  dashboard = "/",
-  about = "/about",
-}
+import { MainLayout } from "../common/layouts/MainLayout";
+import { About } from "../features/About/About";
+import { Dashboard } from "../features/Dashboard/Dashboard";
+import { AppRoutes } from "../routes";
 
 export const router = createBrowserRouter([
   {
