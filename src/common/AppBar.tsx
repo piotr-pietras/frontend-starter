@@ -8,6 +8,8 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  SxProps,
+  Theme,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import InfoIcon from "@mui/icons-material/Info";
@@ -50,7 +52,7 @@ export const AppBar = () => {
     <>
       <AppBarMUI position="static">
         <Toolbar>
-          <IconButton sx={{ color: theme.colors.white }} onClick={onDrawerOpen}>
+          <IconButton sx={IconButtonSX} onClick={onDrawerOpen}>
             <MenuIcon fontSize="large" color="inherit" />
           </IconButton>
           <Typography variant="h6">Frontend Starter</Typography>
@@ -71,3 +73,5 @@ export const AppBar = () => {
     </>
   );
 };
+
+const IconButtonSX: SxProps<Theme> = { color: theme.colors.white };
