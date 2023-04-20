@@ -21,7 +21,7 @@ async function initialize() {
 export const App = () => {
   const { isInitialized } = useSelector(selectApp);
   dispatch(async function (dispatch) {
-    initialize();
+    await initialize();
     dispatch(AppSlice.actions.initialized());
   });
 
