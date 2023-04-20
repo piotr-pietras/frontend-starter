@@ -3,9 +3,10 @@ import { State } from "./services/redux";
 
 export const selectApp = createSelector(
   (state: State) => state.app,
-  ({ isInitialized }) => {
+  ({ isInitialized, paletteMode }) => {
     return {
       isInitialized,
+      paletteMode,
     };
   }
 );

@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material/styles";
+import { PaletteMode } from "@mui/material";
 
 //Colors' name based on: https://www.color-hex.com/color-names.html
 interface Colors {
@@ -23,22 +24,29 @@ const colors: Colors = {
   yellow1: "rgba(255,255,0,1)",
 };
 
-export const theme = createTheme({
-  colors,
-  components: {
-    MuiCssBaseline: {
-      styleOverrides: {
-        "#react-app": {
-          height: "100%",
-        },
-        body: {
-          height: "100%",
-          margin: 0,
-        },
-        html: {
-          height: "100%",
+interface GetTheme {
+  paletteMode?: PaletteMode;
+}
+export const getTheme = ({ paletteMode }: GetTheme) =>
+  createTheme({
+    colors,
+    palette: {
+      mode: paletteMode || "light",
+    },
+    components: {
+      MuiCssBaseline: {
+        styleOverrides: {
+          "#react-app": {
+            height: "100%",
+          },
+          body: {
+            height: "100%",
+            margin: 0,
+          },
+          html: {
+            height: "100%",
+          },
         },
       },
     },
-  },
-});
+  });

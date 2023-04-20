@@ -10,15 +10,25 @@ import {
   ListItemText,
   SxProps,
   Theme,
+  useTheme,
+  Box,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import InfoIcon from "@mui/icons-material/Info";
+// import MenuIcon from "@mui/icons-material/Menu";
+// import InfoIcon from "@mui/icons-material/Info";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import React, { ReactElement, useCallback, useState } from "react";
-import { theme } from "../services/theme";
 import { Drawer } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { AppRoutes } from "../routes";
+import {
+  Brightness3 as NightIcon,
+  Brightness5 as DayIcon,
+  Menu as MenuIcon,
+  Info as InfoIcon,
+} from "@mui/icons-material";
+import { useDispatch, useSelector } from "react-redux";
+import { selectAppBar } from "./appBar.selector";
+import { AppSlice } from "../app.slice";
 
 const navigations: {
   name: string;
@@ -37,10 +47,18 @@ const navigations: {
   },
 ];
 
+const {
+  actions: { pallateToggled },
+} = AppSlice;
+
 export const AppBar = () => {
+  const theme = useTheme();
+  const dispatch = useDispatch();
+  const { paletteMode } = useSelector(selectAppBar);
   const navigate = useNavigate();
   const [isDrawerOpened, setIsDrawerOpened] = useState(false);
 
+  const onPallateToggle = useCallback(() => dispatch(pallateToggled()), []);
   const onDrawerClose = useCallback(() => setIsDrawerOpened(false), []);
   const onDrawerOpen = useCallback(() => setIsDrawerOpened(true), []);
   const onNavigate = useCallback((to: string) => {
@@ -51,11 +69,22 @@ export const AppBar = () => {
   return (
     <>
       <AppBarMUI position="static">
-        <Toolbar>
-          <IconButton sx={IconButtonSX} onClick={onDrawerOpen}>
-            <MenuIcon fontSize="large" color="inherit" />
-          </IconButton>
-          <Typography variant="h6">Frontend Starter</Typography>
+        <Toolbar sx={getToolbarSX()}>
+          <Box sx={getToolbarBoxSX()}>
+            <IconButton sx={getIconButtonSX(theme)} onClick={onDrawerOpen}>
+              <MenuIcon fontSize="large" color="inherit" />
+            </IconButton>
+            <Typography variant="h6">Frontend Starter</Typography>
+          </Box>
+          <Box sx={getToolbarBoxSX()}>
+            <IconButton sx={getIconButtonSX(theme)} onClick={onPallateToggle}>
+              {paletteMode === "dark" ? (
+                <NightIcon fontSize="large" color="inherit" />
+              ) : (
+                <DayIcon fontSize="large" color="inherit" />
+              )}
+            </IconButton>
+          </Box>
         </Toolbar>
       </AppBarMUI>
       <Drawer anchor={"left"} open={isDrawerOpened} onClose={onDrawerClose}>
@@ -74,4 +103,16 @@ export const AppBar = () => {
   );
 };
 
-const IconButtonSX: SxProps<Theme> = { color: theme.colors.white };
+const getIconButtonSX: (theme: Theme) => SxProps<Theme> = (theme) => ({
+  color: theme.colors.white,
+});
+
+const getToolbarSX: () => SxProps<Theme> = () => ({
+  display: "flex",
+  justifyContent: "space-between",
+});
+
+const getToolbarBoxSX: () => SxProps<Theme> = () => ({
+  display: "flex",
+  alignItems: "center",
+});
