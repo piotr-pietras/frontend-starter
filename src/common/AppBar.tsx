@@ -13,14 +13,13 @@ import {
   useTheme,
   Box,
 } from "@mui/material";
-// import MenuIcon from "@mui/icons-material/Menu";
-// import InfoIcon from "@mui/icons-material/Info";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import React, { ReactElement, useCallback, useState } from "react";
 import { Drawer } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { AppRoutes } from "../routes";
 import {
+  Apartment as ApartmentIcon,
   Brightness3 as NightIcon,
   Brightness5 as DayIcon,
   Menu as MenuIcon,
@@ -39,6 +38,11 @@ const navigations: {
     name: "Dashboard",
     to: AppRoutes.dashboard,
     muiIcon: <DashboardIcon fontSize="large" />,
+  },
+  {
+    name: "Test Feature",
+    to: AppRoutes.test,
+    muiIcon: <ApartmentIcon fontSize="large" />,
   },
   {
     name: "About",

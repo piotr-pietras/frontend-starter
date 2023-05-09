@@ -4,6 +4,7 @@ import { MainLayout } from "../common/layouts/MainLayout";
 import { About } from "../features/About/About";
 import { Dashboard } from "../features/Dashboard/Dashboard";
 import { AppRoutes } from "../routes";
+import { TestFeature } from "../features/TestFeature/TestFeature";
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ export const router = createBrowserRouter([
       {
         path: AppRoutes.about,
         element: <About />,
+      },
+      {
+        path: AppRoutes.test,
+        element: <TestFeature />,
       },
     ],
   },
