@@ -7,12 +7,12 @@ import { selectApp } from "./app.selector";
 import { GlobalLoading } from "./common/GlobalLoading";
 import { ThemeProvider } from "@mui/material";
 import { getTheme } from "./services/theme";
-import { initializeThunk } from "./initialize.thunk";
+import { useInitializeThunk } from "./initialize.thunk";
 
 export const App = () => {
   const { isInitialized, paletteMode } = useSelector(selectApp);
 
-  initializeThunk();
+  useInitializeThunk();
 
   return (
     <ThemeProvider theme={getTheme({ paletteMode })}>

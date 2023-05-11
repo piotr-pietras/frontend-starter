@@ -1,5 +1,5 @@
 import { ThunkDispatch } from "redux-thunk";
-import { State, dispatch } from "./";
+import { State, dispatch } from "./store";
 import { AnyAction } from "@reduxjs/toolkit";
 import { useEffect } from "react";
 

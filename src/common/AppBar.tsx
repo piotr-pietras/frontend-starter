@@ -1,7 +1,7 @@
 import {
-  Toolbar,
+  Toolbar as ToolbarMUI,
   AppBar as AppBarMUI,
-  IconButton,
+  IconButton as IconButtonMUI,
   Typography,
   List,
   ListItem,
@@ -12,6 +12,7 @@ import {
   Theme,
   useTheme,
   Box,
+  styled,
 } from "@mui/material";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import React, { ReactElement, useCallback, useState } from "react";
@@ -73,22 +74,22 @@ export const AppBar = () => {
   return (
     <>
       <AppBarMUI position="static">
-        <Toolbar sx={getToolbarSX()}>
-          <Box sx={getToolbarBoxSX()}>
-            <IconButton sx={getIconButtonSX(theme)} onClick={onDrawerOpen}>
+        <Toolbar>
+          <Container>
+            <IconButton onClick={onDrawerOpen}>
               <MenuIcon fontSize="large" color="inherit" />
             </IconButton>
             <Typography variant="h6">Frontend Starter</Typography>
-          </Box>
-          <Box sx={getToolbarBoxSX()}>
-            <IconButton sx={getIconButtonSX(theme)} onClick={onPallateToggle}>
+          </Container>
+          <Container>
+            <IconButton onClick={onPallateToggle}>
               {paletteMode === "dark" ? (
                 <NightIcon fontSize="large" color="inherit" />
               ) : (
                 <DayIcon fontSize="large" color="inherit" />
               )}
             </IconButton>
-          </Box>
+          </Container>
         </Toolbar>
       </AppBarMUI>
       <Drawer anchor={"left"} open={isDrawerOpened} onClose={onDrawerClose}>
@@ -107,16 +108,16 @@ export const AppBar = () => {
   );
 };
 
-const getIconButtonSX: (theme: Theme) => SxProps<Theme> = (theme) => ({
-  color: theme.colors.white,
-});
-
-const getToolbarSX: () => SxProps<Theme> = () => ({
+const Toolbar = styled(ToolbarMUI)(() => ({
   display: "flex",
   justifyContent: "space-between",
-});
+}));
 
-const getToolbarBoxSX: () => SxProps<Theme> = () => ({
+const Container = styled(Box)(() => ({
   display: "flex",
   alignItems: "center",
-});
+}));
+
+const IconButton = styled(IconButtonMUI)(({ theme }) => ({
+  color: theme.colors.white,
+}));

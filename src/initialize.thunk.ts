@@ -1,5 +1,5 @@
 import { AppSlice } from "./app.slice";
-import { thunkBuilder } from "./services/redux";
+import { thunkBuilder } from "./services/redux/thunk";
 
 async function mockedInit() {
   //Test promise for initial app load
@@ -13,7 +13,7 @@ async function mockedInit() {
 
 const { initialized } = AppSlice.actions;
 
-export const initializeThunk = thunkBuilder(async (dispatch) => {
+export const useInitializeThunk = thunkBuilder(async (dispatch) => {
   await mockedInit();
   dispatch(initialized());
 });

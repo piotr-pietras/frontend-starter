@@ -6,6 +6,7 @@ specifiers:
   '@mui/icons-material': ^5.11.11
   '@mui/material': ^5.11.12
   '@mui/system': ^5.11.12
+  '@mui/x-data-grid': ^6.3.1
   '@reduxjs/toolkit': ^1.9.3
   '@types/express': ^4.17.16
   '@types/node': ^18.11.18
@@ -38,6 +39,7 @@ dependencies:
   '@mui/icons-material': 5.11.11_ppvyq2xwwyuzezkmi7rs6nde5q
   '@mui/material': 5.11.12_pte7igy7nwbxlzeccvq7hpzi4q
   '@mui/system': 5.11.12_dhit7hwbxwjs4eberzjw3ibkbi
+  '@mui/x-data-grid': 6.3.1_l63iwaafpcmtjxqaddu7534ibu
   '@reduxjs/toolkit': 1.9.3_k4ae6lp43ej6mezo3ztvx6pykq
   axios: 1.4.0
   dotenv: 16.0.3
@@ -460,6 +462,40 @@ packages:
       prop-types: 15.8.1
       react: 18.2.0
       react-is: 18.2.0
+    dev: false
+
+  /@mui/utils/5.12.3_react@18.2.0:
+    resolution: {integrity: sha512-D/Z4Ub3MRl7HiUccid7sQYclTr24TqUAQFFlxHQF8FR177BrCTQ0JJZom7EqYjZCdXhwnSkOj2ph685MSKNtIA==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      react: ^17.0.0 || ^18.0.0
+    dependencies:
+      '@babel/runtime': 7.21.0
+      '@types/prop-types': 15.7.5
+      '@types/react-is': 17.0.3
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-is: 18.2.0
+    dev: false
+
+  /@mui/x-data-grid/6.3.1_l63iwaafpcmtjxqaddu7534ibu:
+    resolution: {integrity: sha512-iceINknaOd7AIyd1h8GZVVQKS0R/JgcC7Cr7jjbqBtv018FEppMCweWdbQZYrHmcmkx2tsM28dvOn40iUKHVCg==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      '@mui/material': ^5.4.1
+      '@mui/system': ^5.4.1
+      react: ^17.0.2 || ^18.0.0
+      react-dom: ^17.0.2 || ^18.0.0
+    dependencies:
+      '@babel/runtime': 7.21.0
+      '@mui/material': 5.11.12_pte7igy7nwbxlzeccvq7hpzi4q
+      '@mui/system': 5.11.12_dhit7hwbxwjs4eberzjw3ibkbi
+      '@mui/utils': 5.12.3_react@18.2.0
+      clsx: 1.2.1
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      reselect: 4.1.8
     dev: false
 
   /@popperjs/core/2.11.6:
@@ -2224,6 +2260,10 @@ packages:
 
   /reselect/4.1.7:
     resolution: {integrity: sha512-Zu1xbUt3/OPwsXL46hvOOoQrap2azE7ZQbokq61BQfiXvhewsKDwhMeZjTX9sX0nvw1t/U5Audyn1I9P/m9z0A==}
+    dev: false
+
+  /reselect/4.1.8:
+    resolution: {integrity: sha512-ab9EmR80F/zQTMNeneUr4cv+jSwPJgIlvEmVwLerwrWVbpLlBuls9XHzIeTFy4cegU2NHBp3va0LKOzU5qFEYQ==}
     dev: false
 
   /resolve-cwd/3.0.0:

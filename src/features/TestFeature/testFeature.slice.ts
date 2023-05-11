@@ -1,11 +1,8 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { RequestState, reduceRequestUpdate } from "../../services/redux/fetch";
 
 interface InitialState {
-  request: {
-    pending: boolean;
-    received?: any;
-    error?: unknown;
-  };
+  request: RequestState<any>;
   quantity: number;
 }
 const initialState: InitialState = {
@@ -23,17 +20,7 @@ export const TestFeatureSlice = createSlice({
       state,
       { payload }: PayloadAction<{ received?: any; error?: unknown }>
     ) {
-      if (payload.received) {
-        state.request.received = payload.received;
-        state.request.pending = false;
-        return;
-      }
-      if (payload.error) {
-        state.request.error = payload.error;
-        state.request.pending = false;
-        return;
-      }
-      state.request.pending = true;
+      reduceRequestUpdate(state, payload);
     },
     qunatityChanged(state, { payload }: PayloadAction<number>) {
       state.quantity = payload;

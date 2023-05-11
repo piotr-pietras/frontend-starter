@@ -1,11 +1,12 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { State } from "../../services/redux";
+import { State } from "../../services/redux/store";
 
 export const selectTestFeature = createSelector(
   (state: State) => state.testFeature,
-  ({ quantity }) => {
+  ({ quantity, request }) => {
     return {
-        quantity,
+      quantity,
+      testData: request?.received?.data || [],
     };
   }
 );
