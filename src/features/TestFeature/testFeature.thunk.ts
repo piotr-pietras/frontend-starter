@@ -9,7 +9,7 @@ export const useFetchTestDataThunk = thunkBuilder(
     const { quantity } = getState().testFeature;
     dispatch(requestUpdated({}));
     try {
-      const received = await axios.post("/test", { quantity });
+      const received = (await axios.post("/test", { quantity })).data;
       dispatch(requestUpdated({ received }));
     } catch (error) {
       dispatch(requestUpdated({ error }));

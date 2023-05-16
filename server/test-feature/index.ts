@@ -8,6 +8,9 @@ export const addTestPost = (app: ReturnType<typeof express>) => {
       res.sendStatus(400);
 
     const toSend = data.slice(0, body.quantity + 1);
-    res.send(toSend);
+
+    setTimeout(() => {
+      res.send(toSend);
+    }, 2000);
   });
 };

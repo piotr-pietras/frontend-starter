@@ -5,22 +5,22 @@ import { useFetchTestDataThunk } from "./testFeature.thunk";
 import { TestFeatureSlice } from "./testFeature.slice";
 import { DataGrid } from "@mui/x-data-grid";
 import { columns } from "./columns";
-import { Button, styled } from "@mui/material";
+import { Button, styled, CircularProgress } from "@mui/material";
 
 const { qunatityChanged } = TestFeatureSlice.actions;
 
 export const TestFeature = () => {
   const dispatch = useDispatch();
-  const more = useCallback(() => dispatch(qunatityChanged(quantity + 10)), []);
-  const { quantity, testData } = useSelector(selectTestFeature);
+  const more = () => dispatch(qunatityChanged(quantity + 10));
+  const { quantity, testData, isPending } = useSelector(selectTestFeature);
 
   useFetchTestDataThunk([quantity]);
 
   return (
     <Container>
       <ButtonContainer>
-        <Button onClick={more} variant="contained">
-          more +10
+        <Button onClick={more} disabled={isPending} variant="contained">
+          {isPending ? <CircularProgress /> : <p>more +10</p>}
         </Button>
       </ButtonContainer>
       <DataGrid rows={testData} columns={columns} />

@@ -6,7 +6,8 @@ export const selectTestFeature = createSelector(
   ({ quantity, request }) => {
     return {
       quantity,
-      testData: request?.received?.data || [],
+      testData: request?.received || [],
+      isPending: request.pending,
     };
   }
 );
