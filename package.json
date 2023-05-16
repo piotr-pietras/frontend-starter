@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "build": "pnpm webpack --config ./webpack.config.js",
-    "start": "pnpm ts-node ./server/index.ts",
-    "prod": "pnpm run build & pnpm run start",
-    "dev": "pnpm nodemon --config ./nodemon.config.json"
+    "dev-build": "pnpm webpack watch --config ./webpack.config.js",
+    "server": "pnpm ts-node ./server/index.ts",
+    "dev-server": "pnpm nodemon --config ./nodemon.config.json",
+    "dev": "pnpm run dev-build & pnpm run dev-server",
+    "prod": "pnpm run build & pnpm run server"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",

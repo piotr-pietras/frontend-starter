@@ -26,8 +26,13 @@ module.exports = {
     }),
   ],
   output: {
-    filename: "main.js",
+    filename: "[chunkhash].chunk.js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
   },
 };
